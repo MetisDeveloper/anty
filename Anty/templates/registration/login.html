@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/static/css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/slick-theme.css" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+  <header>
+    <div class="member">
+      <h3>
+        <a href="javascript:history.back()"
+          ><i class="fas fa-chevron-left"></i
+        ></a>
+        ログイン
+      </h3>
+    </div>
+  </header>
+  <form method="post">
+	{% csrf_token %}
+    <div class="member-item">
+      <label class="label" for="e-mail">メールアドレス</label><br>
+      <input id="e-mail" type="text" name="username" required />
+    </div>
+<div class="login-password">
+    <div class="password member-item">
+      <label class="label" for="password">パスワード</label>
+      
+      <br>
+      <input type="password" id="textPassword" name="password" required />
+      <span
+        id="buttonEye"
+        class="fa fa-eye"
+        onclick="pushHideButton()"
+      ></span>
+    </div>
+    <a href="./forget.html">パスワードを忘れた方</a>
+</div>
+
+    <div class="login-member">
+    <button
+          type="submit"
+          class="login2"
+        >
+          ログイン
+        </button>
+        </div>
+    </form>
+        <div class="login-member no-member">
+            <p>アカウントをお持ちでない方</p>
+            <button
+              type="“button”"
+              class="login2"
+              onclick="location.href='{% url "signup" %}'"
+            >
+              会員登録
+            </button>
+            </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/js/slick.js"></script>
+
+  <script src="/static/js/index.js"></script>
+</body>
+</html>

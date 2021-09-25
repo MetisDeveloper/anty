@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="/static/css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/slick-theme.css" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="member">
+        <h3>
+          <a href="javascript:history.back()"
+            ><i class="fas fa-chevron-left"></i
+          ></a>
+          会員登録
+        </h3>
+      </div>
+    </header>
+    <main>
+      <form method="post">
+		{% csrf_token %}
+        <p class="member-item">
+          <label class="label" for="e-mail">メールアドレス</label><br>
+          <input id="e-mail" type="text" name="email" required />
+        </p>
+
+        <div class="password member-item ">
+          <label class="label" for="password">パスワード<span>＊7文字以上の半角英数字</span></label>
+          
+          
+          <input type="password" id="textPassword" name="password1" required />
+          <span
+            id="buttonEye"
+            class="fa fa-eye"
+            onclick="pushHideButton()"
+          ></span>
+        </div>
+
+        <p class="member-item password">
+          <label class="label" for="tel">電話番号 <span>例　09011112222</span></label>
+          <input type="tel" id="label" name="tel" required />
+        </p>
+        <div class="checkbox-first">
+            <label class="checkbox1" for="checkbox">
+          <input type="checkbox" name="利用規約" value="" id="consent" />
+ <a href=""> 利用規約</a>と<a href="">プライバシーポリシー</a>に同意する</label>
+        </div>
+        <div class="next-button">
+            <p>「次へ」のボタンをタップすると、<br>
+            お客様の登録メールアドレスに認証URLが送られます。（未実装）</p>
+        <button
+          type="submit"
+          class="next"
+          disabled
+			onclick="$('#password2').val($('#textPassword').val());"
+        >
+          次へ
+        </button>
+    </div>
+	<input type="hidden" id="password2" name="password2">
+      </form>
+    <div class="login-member">
+        <p>アカウントをお持ちの方</p>
+        <button
+          type="button"
+          class="login2"
+          onclick="location.href='{% url "login" %}';"
+        >
+          ログイン
+        </button>
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/slick.js"></script>
+
+    <script src="/static/js/index.js"></script>
+}
+</script>
+  </body>
+</html>
