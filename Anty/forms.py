@@ -6,6 +6,9 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
+from .models import Point
+
+
 User = get_user_model()
 
 
@@ -46,6 +49,13 @@ class SignUpForm(UserCreationForm):
             #activate_url = get_activate_url(user)
             #message = message_template + activate_url
             #user.email_user(subject, message)
+            
+            point = Point(
+                    user = user,
+                    point = 0
+                    )
+            point.save()
+
         return user
         
 

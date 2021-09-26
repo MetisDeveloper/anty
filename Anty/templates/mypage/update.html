@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>プロフィール編集 | Anty</title>
+  </head>
+  <body>
+    <header>
+      <div class="member good">
+        <h3>
+        <a href="javascript:history.back()"
+            ><i class="fas fa-chevron-left "></i
+          ></a>
+        プロフィールの編集</h3>
+      </div>
+    </div>
+    </header>
+
+    <main>
+      <form method="POST" name="main_form">
+      {% csrf_token %}
+      <div class="main">
+        <div class="main-update">
+          <section class="update">
+              <div class="main-mypage">
+              <div class="update-contents">
+                  <div class="update-box flex">
+                      <div class="update-left">
+                          <a href="#"><i class="fas fa-user-circle"></i></a>
+                          <a href="javascript:main_form.submit()" class="update-left-text">更新する</a>
+                      </div>
+                      <div class="update-right">
+                          <label class="ef">
+                              <input type="text" value="{{ username }}" class="guests" name="username">
+                          </label>
+                          <p class="update-right-text">お気に入りのジャンル</p>
+                            <input type="text" name="name" list="clothes" placeholder="カジュアル" autocomplete="off" class="Genre">
+                              <datalist id="clothes">
+                                <option value="モード" class="clothes">
+                              　<option value="きれいめ" class="clothes">
+                              　<option value="ベーシック" class="clothes">
+                                <option value="ストリート" class="clothes">
+                              </datalist>
+                      </div>
+              </div>
+              </div>
+      
+              <div class="update-part">
+              <a href="{% url "address" %}"><div class="update-part-contents">
+                  <div class="update-part-box flex">
+                  <p class="updat-part-title">住所</p>
+                  <div class="arrow category-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                  </div>
+                  </div>
+                </div></a>
+                <a href="./mailpass.html"><div class="update-part-contents">
+                  <div class="update-part-box flex">
+                  <p class="updat-part-title">メール、パスワード</p>
+                  <div class="arrow category-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                  </div>
+                  </div>
+                </div></a>
+                <a href="#"><div class="update-part-contents">
+                  <div class="update-part-box flex">
+                  <p class="updat-part-title">クレジットカードの情報</p>
+                  <div class="arrow category-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                  </div>
+                  </div>
+                </div></a>
+                </div>
+          </div>
+          
+          </section>
+      </div>
+      </div>
+    </form>
+</main>
+    <footer>
+        <div class="footer-box">
+          <div class="footer-img">
+            <a href="../home.html"
+              ><i class="fas fa-home"></i>
+              <p>ホーム</p>
+            </a>
+          </div>
+          <div class="footer-img">
+            <a href="../good.html"
+              ><i class="far fa-heart"></i>
+              <p>いいね</p>
+            </a>
+          </div>
+          <div class="footer-img">
+            <a href="../item/item.html"
+              ><i class="fas fa-camera"></i>
+              <p>出品</p>
+            </a>
+          </div>
+          <div class="footer-img">
+            <a href="">
+              <i class="fas fa-globe-africa"></i>
+              <p>エコ</p>
+            </a>
+          </div>
+          <div class="footer-img color">
+            <a href="{% url "mypage" %}">
+              <i class="far fa-user"></i>
+              <p>マイページ</p>
+            </a>
+          </div>
+        </div>
+      </footer>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    </body>
+  </html>

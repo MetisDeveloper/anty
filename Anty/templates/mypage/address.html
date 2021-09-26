@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>住所 | Anty</title>
+  </head>
+  <body>
+    <header>
+      <div class="member good">
+        <h3>
+        <a href="{% url "profile_update" %}"
+            ><i class="fas fa-chevron-left"></i></a>
+        住所</h3>
+      </div>
+    </div>
+    </header>
+
+    <main>
+      <div class="main">
+        <div class="main-address">
+		{% for address in address_data %}
+          <section class="address-contents">
+                <div class="address-width">
+                <div class="address-big">
+                <div class="adress-first">
+                  <div class="address-name">
+                    <div class="adress-fist-name">
+			    <p class="address-name-text">{{ address.lastname_furi }}</p>
+			    <p class="address-name-title">{{ address.lastname }}</p>
+                    </div>
+                    <div class="adress-name-middle">
+			    <p class="address-name-text">{{ address.firstname_furi }}</p>
+			    <p class="address-name-title">{{ address.firstname }}</p>
+                  </div>
+                </div>
+                </div>
+                <div class="address-tel-box">
+                <p class="address-tel">{{ address.tel }}</p>
+              </div>
+              </div>
+              <div class="address-tel-box home-number address-bottom">
+                <p class="address-tel home-text">{{ address.portalcode }}</p>
+              </div>
+              <div class="address-home-box address-bottom">
+                <div class="address-tel-box home-left">
+                  <div class="address-tel">
+                  <div class="home-left-box">
+                  <p class="home-text home-text-left">{{ address.prefecture.name }}</p>
+                  <div class="home-v"><i class="fas fa-chevron-down adress-down"></i></div>
+                </div>
+                  </div>
+                </div>
+                <div class="address-tel-box home-right">
+                  <p class="address-tel home-text">{{ address.detail1 }}</p>
+                </div>
+              </div>
+              <div class="address-tel-box address-home-end address-bottom">
+                <p class="address-tel home-text">{{ address.detail2 }}</p>
+              </div>
+              <div class="address-tel-box address-home-end address-bottom">
+                <p class="address-tel home-text">{% if address.detail3 %}{{ address.detail3 }}{% endif %}</p>
+              </div>
+            </div>
+            <div class="address-btn-box">
+		    <a href="{% url "address_edit" address.id %}" class="address-btn">編集する</a>
+            </div>
+          </section>
+      {% endfor %}
+      <a href="{% url "address_create" %}" class="address-new-box">
+            <div class="address-new-contents home-text">
+              <div class="icon">
+                <i class="fas fa-plus-circle"></i>
+              </div>
+              <div class="address-new-title">
+                <p class="address-new-text">新しい住所を登録する</p>
+              </div>
+            </div>
+          </a>
+              </div>
+      </div>
+    </main>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</body>
+</html>

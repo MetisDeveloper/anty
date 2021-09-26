@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>マイページ | Anty</title>
+  </head>
+  <body>
+    <header>
+      <div class="member good">
+        <h3>
+        <a href="javascript:history.back()"
+            ><i class="fas fa-chevron-left none"></i
+          ></a>
+        マイページ</h3>
+      </div>
+    </div>
+    </header>
+
+    <main>
+      <div class="main">
+        <div class="main-mypage">
+          <section class="mypage-box">
+              <div class="mypage-contents">
+                  <div class="contents-box flex">
+                  <div class="contents-left">
+                      <a href="#"><i class="fas fa-user-circle"></i></a>
+		      <a href="{% url "profile_update" %}" class="contents-left-text">編集する</a>
+                  </div>
+                  <div class="contents-right">
+			  <p class="contents-right-name">{{ username }}</p>
+                      <div class="point-box flex">
+                      <i class="fab fa-product-hunt"></i>
+		      <p class="point-text">{{ point }}ポイント</p></div>
+                      <div class="feeling-box flex">
+                          <div class="feeling-left flex"><i class="fas fa-smile-beam"></i><p class="feeling-left-text">2</p></div>
+                          <div class="feeling-right flex"><i class="fas fa-frown"></i><p class="feeling-right-text">1</p></div>
+                          <div class="arrow category-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="contents-box-end flex">
+                  <div class="box-end-left">
+			  <p class="end-left-text">{{ follow }}<br>フォロワー</p>
+                  </div>
+                  <div class="box-end-right">
+			  <p class="end-right-text">{{ follower }}<br>フォロワー</p>
+                  </div>
+              </div>
+              </div>
+              <div class="update-part">
+                <a href="#"><div class="update-part-contents">
+                    <div class="update-part-box flex">
+                    <p class="updat-part-title">出品した商品</p>
+                      <div class="arrow category-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                  </div>
+                    </div>
+                  </div></a>
+                  <a href="#"><div class="update-part-contents">
+                    <div class="update-part-box flex">
+                    <p class="updat-part-title">購入した商品</p>
+                      <div class="arrow category-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                  </div>
+                    </div>
+                  </div></a>
+                  <a href="#"><div class="update-part-contents">
+                    <div class="update-part-box flex">
+                    <p class="updat-part-title">ポイント履歴</p>
+                      <div class="arrow category-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                  </div>
+                    </div>
+                  </div></a>
+                  <a href="#"><div class="update-part-contents">
+                    <div class="update-part-box flex">
+                    <p class="updat-part-title">個人情報設定</p>
+                      <div class="arrow category-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                  </div>
+                    </div>
+                  </div></a>
+                  </div>
+          </section>
+
+          
+      </div>
+      </div>
+    </main>
+
+    <footer>
+        <div class="footer-box">
+          <div class="footer-img">
+            <a href="../home.html"
+              ><i class="fas fa-home"></i>
+              <p>ホーム</p>
+            </a>
+          </div>
+          <div class="footer-img">
+            <a href="../good.html"
+              ><i class="far fa-heart"></i>
+              <p>いいね</p>
+            </a>
+          </div>
+          <div class="footer-img ">
+            <a href="../item/item.html"
+              ><i class="fas fa-camera"></i>
+              <p>出品</p>
+            </a>
+          </div>
+          <div class="footer-img">
+            <a href="">
+              <i class="fas fa-globe-africa"></i>
+              <p>エコ</p>
+            </a>
+          </div>
+          <div class="footer-img color">
+            <a href="./mypage.html">
+              <i class="far fa-user"></i>
+              <p>マイページ</p>
+            </a>
+          </div>
+        </div>
+      </footer>
+      <script src="./update.html"></script>
+
+  
+      <script src="/static/js/index.js"></script>
+    </body>
+  </html>
