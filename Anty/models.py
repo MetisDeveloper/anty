@@ -68,3 +68,63 @@ class Address(models.Model):
     lastname_furi = models.TextField(max_length=20, null=True)
     tel = models.CharField(max_length=32, null=False)
     primary = models.BooleanField(default=False)
+
+
+
+class Line_user(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=None)
+    name = models.TextField(max_length=10, null=True)
+    line_id  = models.TextField(max_length=30)
+    message_status = models.IntegerField()
+    broadcast = models.TextField(max_length=1000, null=True)
+
+
+class Brand(models.Model):
+    name = models.TextField(max_length=30)
+    image_url = models.TextField(max_length=100)
+    code = models.BooleanField(default=False)
+
+class Gender(models.Model):
+    name = models.TextField(max_length=30)
+    image_url = models.TextField(max_length=100, null=True)
+
+
+class Category(models.Model):
+    name = models.TextField(max_length=30)
+    image_url = models.TextField(max_length=100, null=True)
+
+
+
+class Temp_used_product(models.Model):
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    gender = models.ForeignKey(Gender, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    name = models.TextField(max_length=30)
+    intro = models.TextField(max_length=1000, null=True)
+    base_price = models.IntegerField()
+
+
+
+class Sche_sipping_date(models.Model):
+    display = models.TextField(max_length=10)
+
+
+class Product_status(models.Model):
+    display = models.TextField(max_length=1000)
+
+
+class Hope_sell(models.Model):
+    display = models.TextField(max_length=1000)
+
+
+class Used_product(models.Model):
+    temp_product = models.ForeignKey(Temp_used_product, on_delete=models.CASCADE)
+    seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name='seller_user')
+    buyer = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=None, related_name='buyer_user')
+    price = models.IntegerField()
+    explain = models.TextField(max_length=1000)
+    schedule = models.ForeignKey(Sche_sipping_date, on_delete=models.CASCADE)
+    status = models.ForeignKey(Product_status, on_delete=models.CASCADE)
+    hope = models.ForeignKey(Hope_sell, on_delete=models.CASCADE)
+    is_released = models.BooleanField(default=False)
+    is_delete = models.BooleanField(default=False)

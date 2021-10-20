@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)w%v#2m*v4uc$w9jjm_0i&(7_depbrniwt)rod8phmk!+als8v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["beev.jp"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -153,3 +154,6 @@ LOGOUT_REDIRECT_URL = "/login/"
 AUTH_USER_MODEL = 'Anty.User'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# 画像保存パスの指定
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

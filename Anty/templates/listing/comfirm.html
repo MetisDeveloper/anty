@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+    <link rel="stylesheet" href="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/css/style.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>出品確認 | Anty</title>
+  </head>
+  <body>
+    <header class="choose-header">
+      <div class="member good no-bgi">
+        <h3>
+        <a href="javascript:history.back()" class="back-btn none"
+            ><i class="fas fa-chevron-left"></i
+          ></a>
+        出品</h3>
+      </div>
+      <div class="choose">
+        <p class="choose-text">商品の情報を確認</p>
+      </div>
+ 
+    </header>
+
+    <main class="main-item-Verification">
+      <div class="main-sell">
+      
+        <div class="main-category">
+          <div class="item-input-bgi">
+              <div class="item-input-inner">
+               
+                 <div class="item-input-inner-img">
+             <img src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/image/gender/{{temp_product.gender.id}}.png" alt="general">
+      <p>{{ temp_product.gender.name }}</p>
+                 </div>
+                 <div class="item-input-inner-img">
+                  <i class="fas fa-chevron-right item-input-inner-arrow-left"></i>
+                  <img src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/image/category/{{temp_product.category.id}}.png" alt="clothing">
+      <p>{{ temp_product.category.name }}</p>
+                  <i class="fas fa-chevron-right item-input-inner-arrow-right"></i>
+                </div>
+                <div class="item-input-inner-img item-input-inner-img-circle">
+                  <img src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/image/brand_logo/{{temp_product.brand.id}}.png" alt="general">
+      <p>{{ temp_product.brand.name }}</p>
+                </div>
+             
+              </div>
+          <div class="item-input-inner-text">
+            <p class="item-input-inner-text-name">{{ temp_product.name }}</p>
+          <p class="item-input-inner-text-price">定価 <span>￥{{ temp_product.base_price }}</span> </p>
+        </div>
+      </div>
+    <div class="item-verification">
+      {% for image in images %}
+        <img src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/image/{{ image }}" alt="">
+      {% endfor %}
+      </div>    
+          
+    </div>
+    <!--
+    <div class="item-day-top">
+        <div class="item-day-inner">
+            <p>配送方法</p>
+           <p class="item-day-inner-right">レターパックライト</p>
+        </div>
+    </div>
+    -->
+    <div class="item-day-middle">
+        <div class="item-day-inner">
+            <p>発送予定日</p>
+            <p class="item-day-inner-right">{{ selected_sche_sipping_date.display }}</p>
+        </div>
+    </div>
+    <div class="item-price-box">
+        <div class="item-price-top">
+            <div class="item-price-inner">
+                <p>発送元の住所</p>
+
+            </div>
+        </div>
+        <div class="item-day-bottom-verification">
+            <p>{{ address.lastname }}&emsp;{{ address.firstname }}　<span>{{ address.tel }}</span></p>
+            <p>〒&ensp;{{ address.portalcode }}</p>
+            <p>{{ address.prefecture.name }}{{ address.detail1 }}{{ address.detail2 }}{{ address.detail3 }}</p>
+        </div>
+        </div>
+        <div class="item-day-top">
+          <div class="item-day-inner">
+              <p>商品の状況</p>
+             <p class="item-day-inner-right">{{ selected_product_status.display }}</p>
+          </div>
+      </div>
+        <div class="item-price-box-box">
+    <div class="item-price-box">
+        <div class="item-price-top">
+            <div class="item-price-inner">
+                <p>販売希望</p>
+               <p class="item-day-inner-right">{{ selected_hope_sell.display }}</p>
+            </div>
+        </div>
+        <div class="item-price-middle">
+            <div class="item-price-inner-middle">
+                <p>販売価格</p>
+               <p class="item-day-inner-price">￥&ensp;{{ price }}</p>
+            </div>
+        </div>
+        <div class="item-price-bottom">
+            <div class="item-price-inner-bottom">
+                <div class="item-price-inner-bottom-duble-text">
+                <p>販売手数料(15%)</p>
+                    <p>販売利益</p>
+            </div>
+            <div class="item-price-duble-text">
+              <p class="item-day-inner-right">￥ 00,000</p>
+              <p class="item-day-inner-right">￥ 00,000</p>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="item-write">
+    <div class="item-write-box">
+        <p class="item-write-text">詳細記入欄 <span>(任意1,000文字)</span></p>
+    </div>
+</div>
+<div class="text-area-bottom">
+<div class="text-area-verification">
+    <p>{{ detail }}</p>
+</div>
+   </div>
+</div>
+<div class="buy-item-detail-btn brand-request-btn notice-text-btn transaction-top-btn">
+  <form action="">
+      <button class="item-detail-btn brand-request-btn-btn notice-text-btn-btn item-Verification-btn" type="" formaction=''>修正する
+      </button>
+  </form>
+</div>
+<div class="buy-item-detail-btn brand-request-btn notice-text-btn transaction-top-btn transaction-top-send-notice">
+  <p class="item-detail-btn brand-request-btn-btn notice-text-btn-btn">出品する
+  </p>
+</div>
+
+<!-- スライドページ -->
+<div class="transaction-top-send-slide">
+  <div class="transaction-top-send-slide-title-contents">
+      <i class="fas fa-times transaction-top-send-slide-icon"></i>
+      <p class="transaction-top-send-slide-title item-Verification-slide-title">出品しますか？</p>
+      <div class="transaction-top-send-slide-cancel">
+          <form action="">
+              <input type="checkbox" value="" class="transaction-top-send-slide-cancel-checkbox" id="chkbox">
+          </form>
+          <p class="transaction-top-send-slide-cancel-text">商品状態は表示通りか</p>
+      </div>
+      <p class="transaction-top-send-slide-cancel-text-Status">{{selected_product_status.display}}</p>
+
+      <div class="transaction-top-send-slide-cancel">
+          <form action="">
+              <input type="checkbox" value="" class="transaction-top-send-slide-cancel-checkbox" id="chkbox">
+          </form>
+          <p class="transaction-top-send-slide-cancel-text">写真通りの商品か</p>
+      </div>
+      <img src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/image/{{ images.0 }}" alt="item" class="item-Verification-slide-img">
+
+      <div class="transaction-top-send-slide-cancel">
+        <form action="">
+            <input type="checkbox" value="" class="transaction-top-send-slide-cancel-checkbox" id="chkbox">
+        </form>
+        <p class="transaction-top-send-slide-cancel-text item-Verification-slide-text"><span>ピックアップ掲載</span>について同意する</p>
+    </div>
+
+    <div class="buy-item-detail-btn brand-request-btn notice-text-btn">
+          <form method="POST" action="{% url 'listing' %}">
+            {% csrf_token %}
+            <input type="hidden" value="{{ selected_sche_sipping_date.id }}" name="selected_sche_sipping_date">
+            <input type="hidden" value="{{ selected_product_status.id }}" name="selected_product_status">
+            <input type="hidden" value="{{ selected_hope_sell.id }}" name="selected_hope_sell">
+            <input type="hidden" value="{{ price }}" name="price">
+            <input type="hidden" value="{{ detail }}" name="detail">
+            <input type="hidden" value="{{ address.id }}" name="address">
+            <input type="hidden" value="{{ temp_product.id }}" name="temp_product">
+            {% for image in images %}
+            <input type="hidden" value="{{ image }}" name="image{{ forloop.counter }}">
+            {% endfor %}
+              <button class="item-detail-btn brand-request-btn-btn notice-text-btn-btn transaction-top-send-slide-btn" type="submit" id="submit">
+                出品する
+              </button>
+          </form>
+    </div>
+  </div>
+</div>
+<div class="black-bg" id="js-black-bg"></div>
+
+    
+    </main>
+    <footer>
+        <div class="footer-box">
+          <div class="footer-img">
+            <a href="../home.html"
+              ><i class="fas fa-home"></i>
+              <p>ホーム</p>
+            </a>
+          </div>
+          <div class="footer-img">
+            <a href="../good.html"
+              ><i class="far fa-heart"></i>
+              <p>いいね</p>
+            </a>
+          </div>
+          <div class="footer-img color">
+            <a href="item.html"
+              ><i class="fas fa-camera"></i>
+              <p>出品</p>
+            </a>
+          </div>
+          <div class="footer-img">
+            <a href="">
+              <i class="fas fa-globe-africa"></i>
+              <p>エコ</p>
+            </a>
+          </div>
+          <div class="footer-img">
+            <a href="../profile/mypage.html">
+              <i class="far fa-user"></i>
+              <p>マイページ</p>
+            </a>
+          </div>
+        </div>
+      </footer>
+
+  
+      <script src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/js/index.js"></script>
+    </body>
+  </html>

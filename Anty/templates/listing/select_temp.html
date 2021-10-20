@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/css/style.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>出品 | Anty</title>
+  </head>
+  <body>
+    <header class="choose-header">
+      <div class="member good no-bgi">
+        <h3>
+        <a href="javascript:history.back()" class="back-btn none"
+            ><i class="fas fa-chevron-left"></i
+          ></a>
+        出品</h3>
+      </div>
+      <div class="choose">
+        <p class="choose-text">アイテムを選ぶ</p>
+      </div>
+ 
+    </header>
+    <main>
+
+      <div class="main-category-img part">
+        <div class="main-category-img-box">
+		<img src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/image/brand_logo/{{ brand }}.png" alt="logo">
+      </div>
+      </div>
+      <div class="no-bland-box">
+      <a href="#" class="no-bland">アイテムがない場合</a>
+    </div>
+
+ <div class="choose-item choose-item-box">
+        <div class="choose-item-img">
+		{% for product in temp_product_list %}
+            <a href="javascript:window.location.href='/listing_detail?temp_id={{ product.id }}';" class="choose-item-inner">
+                <img src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/image/temp_product/{{ product.id }}.jpg" alt="">
+            </a>
+		{% endfor %}
+        </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-box">
+          <div class="footer-img">
+            <a href="../home.html"
+              ><i class="fas fa-home"></i>
+              <p>ホーム</p>
+            </a>
+          </div>
+          <div class="footer-img">
+            <a href="../good.html"
+              ><i class="far fa-heart"></i>
+              <p>いいね</p>
+            </a>
+          </div>
+          <div class="footer-img color">
+            <a href="item.html"
+              ><i class="fas fa-camera"></i>
+              <p>出品</p>
+            </a>
+          </div>
+          <div class="footer-img">
+            <a href="">
+              <i class="fas fa-globe-africa"></i>
+              <p>エコ</p>
+            </a>
+          </div>
+          <div class="footer-img">
+            <a href="../profile/mypage.html">
+              <i class="far fa-user"></i>
+              <p>マイページ</p>
+            </a>
+          </div>
+        </div>
+      </footer>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script type="text/javascript" src="../js/slick.js"></script>
+  
+      <script src="../js/index.js"></script>
+    </body>
+  </html>

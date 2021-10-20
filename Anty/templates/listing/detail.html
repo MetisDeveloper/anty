@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+    <link rel="stylesheet" href="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/css/style.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>出品 | Anty</title>
+  </head>
+  <body>
+    <header class="choose-header">
+      <div class="member good no-bgi">
+        <h3>
+        <a href="javascript:history.back()" class="back-btn none"
+            ><i class="fas fa-chevron-left"></i
+          ></a>
+        出品</h3>
+      </div>
+      <div class="choose">
+        <p class="choose-text">商品の情報を入力</p>
+      </div>
+ 
+    </header>
+
+    <main>
+      <div class="main-sell">
+        
+<div class="main-category">
+        <div class="item-input-bgi">
+            <div class="item-input-inner">
+             
+               <div class="item-input-inner-img">
+		       <img src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/image/gender/{{temp_product.gender.id}}.png" alt="general">
+		<p>{{ temp_product.gender.name }}</p>
+               </div>
+               <div class="item-input-inner-img">
+                <i class="fas fa-chevron-right item-input-inner-arrow-left"></i>
+                <img src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/image/category/{{temp_product.category.id}}.png" alt="clothing">
+		<p>{{ temp_product.category.name }}</p>
+                <i class="fas fa-chevron-right item-input-inner-arrow-right"></i>
+              </div>
+              <div class="item-input-inner-img item-input-inner-img-circle">
+                <img src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/image/brand_logo/{{temp_product.brand.id}}.png" alt="general">
+		<p>{{ temp_product.brand.name }}</p>
+              </div>
+           
+            </div>
+            <div class="item-input-inner-text">
+		    <p class="item-input-inner-text-name">{{ temp_product.name }}</p>
+		    <p class="item-input-inner-text-price">定価 <span>￥{{ temp_product.base_price }}</span> </p>
+          </div>
+            
+        </div>
+    </div>
+    <form method="POST" enctype="multipart/form-data"><div class="item-input-img">
+        
+           
+		    {% csrf_token%}
+<label for="file_photo">
+    <div class="file-photo-box">
+        <div class="file-photo-inner">
+            <p class="file-photo-nuber">1</p>
+	<img class="camera" src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/image/listing/camera.png" alt="">
+    <p class="file-photo-cafull">＊</p>
+	<input type="file" id="myImage" name="image_1" required>
+    <img id="preview">
+</div>
+<div class="file-photo-inner">
+    <p class="file-photo-nuber">2</p>
+	<input type="file" accept="image/*" id="myImage2" name="image_2">
+    <img id="preview2">
+</div>
+<div class="file-photo-inner">
+    <p class="file-photo-nuber">3</p>
+	<input type="file" id="myImage3" name="image_3">
+    <img id="preview3">
+</div>
+<div class="file-photo-inner">
+    <p class="file-photo-nuber">4</p>
+	<input type="file" id="myImage4" name="image_4">
+    <img id="preview4">
+</div>
+<div class="file-photo-inner">
+    <p class="file-photo-nuber">5
+    </p>
+	<input type="file" id="myImage5" name="image_5">
+    <img id="preview5">
+</div>
+</div>
+</label>
+        
+          
+    </div>
+    <div class="item-day-top">
+      <!--
+        <div class="item-day-inner">
+            <p>配送方法 <span>＊</span> </p>
+            <select id="select-item">
+                <option value="0" selected="selected" class="Prefecture-name">必須</option></select>
+        </div>
+        -->
+    </div>
+    <div class="item-day-middle">
+        <div class="item-day-inner">
+            <p>発送予定日 <span>＊</span> </p>
+            <select id="select-day" name="sche_sipping_date">
+              {% for  sche_sipping_date in sche_shipping_date_list %}
+                <option value="{{sche_sipping_date.id}}" {% if selected_sche_sipping_date is sche_sipping_date.id %}selected="selected"{% endif %} class="Prefecture-name">{{ sche_sipping_date.display }}</option>
+              {% endfor %}
+            </select>
+              </div>
+    </div>
+    <div class="buy-item-address-contents buy-item-address-contents-input">
+      <div class="buy-item-address-title-input">
+          <p class="buy-item-address-title-left">発送元の住所 <span>＊</span></p>
+          <div class="arrow buy-item-arrow">
+              <i class="fas fa-chevron-right"></i></p>
+      </div>
+  </div>
+  <div class="buy-item-address-name-tel">
+	  <P class="buy-item-address-name">{{ address.lastname }}&emsp;{{ address.firstname }}</P>
+      <p class="buy-item-address-tel">{{ address.tel }}</p>
+  </div>
+  <p class="buy-item-address-text">〒&ensp;{{ address.portalcode }}</p>
+  <p class="buy-item-address-text">{{ address.prefecture.name }}{{ address.detail1 }}{{ address.detail2 }}</p>
+  <p class="buy-item-address-text">{{address.detail3}}</p>
+</div>
+    <div class="item-day-bottom item-day-bottom-top">
+      <div class="item-day-inner">
+          <p>商品の状態 <span>＊</span> </p>
+          <select id="select-item" name="product_status">
+            {% for product_status in product_status_list %}
+            <option value="{{ product_status.id }}" {% if selected_product_status is product_status.id %}selected="selected"{% endif %} class="Prefecture-name">{{ product_status.display }}</option>
+            {% endfor %}
+          </select>
+          </div>
+  </div>
+    <div class="item-price-box">
+        <div class="item-price-top">
+            <div class="item-price-inner">
+                <p>販売希望 <img src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/image/general/question.png" alt=""> </p>
+                <select id="select-day" name="hope_sell">
+              {% for hope_sell in hope_sell_list %}
+                    <option value="{{ hope_sell.id }}" {% if selected_hope_sell is hope_sell.id %}selected="selected"{% endif %} class="Prefecture-name">{{ hope_sell.display }}</option>
+              {% endfor %}
+            </select>
+                  </div>
+        </div>
+        <div class="item-price-middle">
+            <div class="item-price-inner-middle">
+                <p>販売価格 <span>＊</span> </p>
+               <input class="about-price edit-input" type="text" placeholder="推奨￥00,000~" name="price">
+            </div>
+        </div>
+        <div class="item-price-bottom">
+            <div class="item-price-inner-bottom">
+                <div class="item-price-inner-bottom-duble">
+                <p>販売手数料(15%)</p>
+                    <p>販売利益</p>
+            </div>
+            <div class="item-price-duble">
+               <input class="about-price about-price-bottom edit-input" type="text" placeholder="￥00,000" readonly>
+               <input class="about-price edit-input" type="text" placeholder="￥00,000" readonly>
+            </div>
+            </div>
+        </div>
+    </div>
+<div class="item-write">
+    <div class="item-write-box">
+        <p class="item-write-text">詳細記入欄 <span>(任意最大1,000文字)</span></p>
+    </div>
+</div>
+<div class="text-area-bottom">
+<div class="text-area">
+<textarea class="edit-input" type="" placeholder="商品についての詳細記入欄です。&#13;&#10;例)2015年頃に阪急百貨店で購入しました。&#13;&#10;数回しか着ていないので、結構きれいだと思います。" name="detail"></textarea>
+</div>
+   </div>
+</div>
+<input type="hidden" name="temp_product_id" value="{{ temp_product.id }}">
+<div class="item-btn-last">
+     <a href="javascript:$('#hidden_button').click()">確認する</a>
+</div>
+<input type="submit"  style="display:none;" id="hidden_button">
+</form>
+    
+    </main>
+    <footer>
+        <div class="footer-box">
+          <div class="footer-img">
+            <a href="../home.html"
+              ><i class="fas fa-home"></i>
+              <p>ホーム</p>
+            </a>
+          </div>
+          <div class="footer-img">
+            <a href="../good.html"
+              ><i class="far fa-heart"></i>
+              <p>いいね</p>
+            </a>
+          </div>
+          <div class="footer-img color">
+            <a href="item.html"
+              ><i class="fas fa-camera"></i>
+              <p>出品</p>
+            </a>
+          </div>
+          <div class="footer-img">
+            <a href="">
+              <i class="fas fa-globe-africa"></i>
+              <p>エコ</p>
+            </a>
+          </div>
+          <div class="footer-img">
+            <a href="../profile/mypage.html">
+              <i class="far fa-user"></i>
+              <p>マイページ</p>
+            </a>
+          </div>
+        </div>
+      </footer>
+      <script src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/js/index.js"></script>
+    </body>
+  </html>

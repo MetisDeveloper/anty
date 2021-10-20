@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   
+    <link rel="stylesheet" href="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/css/style.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>出品 | Anty</title>
+  </head>
+  <body>
+    <header>
+      <div class="member good">
+        <h3>
+          <span id="back-btn">
+            <i class="fas fa-chevron-left"></i>
+          </span>
+          出品
+        </h3>
+      </div>
+    </div>
+    </header>
+
+    <main>
+      <div class="main-sell">
+        <div class="choose">
+          <p class="choose-text">ブランドをえらぶ</p>
+        </div>
+
+        <div class="main-category">
+          <form id="form2" action="#" method="get" style="font-size:20px">
+            <div type="submit" id="sbtn2">
+              <i class="fas fa-search"></i>
+            </div>
+            <input
+              id="sbox2"
+              id="s"
+              name="s"
+              type="text"
+              placeholder="検索する"
+            />
+          </form>
+
+          <a href="#" class="no-category">ブランドがない場合</a>
+
+          <div class="category-box">
+			{% for brand in brand_list %}
+              <a href="javascript:select_brand({{ brand.id }})" class="category-click"><div class="category-contents">
+                  <div class="category-contents-box flex">
+                  <p class="category-title">{{ brand.name }}</p>
+                  <div class="category-right flex">
+                  <p class="category-text">{% if brand.code %}コードあり{% else %}コードなし{% endif %}</p>
+                  <div class="arrow category-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                  </div>
+                </div>
+                </div>
+              </div></a>
+			{% endfor %}
+              
+          </div>
+
+        </div>
+
+        <section class="man none-2">
+		{% for gender in gender_list %}
+    <a href="javascript:select_gender({{ gender.id }})" class="man-click"><div class="man-contents">
+      <div class="man-contents-box">
+        <div class="man-contents-box-box">
+          <img src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/image/gender/{{ gender.id }}.png" alt="man">
+      <p class="man-title">{{ gender.name }}</p>
+   
+        <div class="arrow category-arrow man-arrow">
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+      </div>
+    </div></a>
+		{% endfor %}
+
+                   </section>
+
+        <section class="part none-3">
+			{% for category in category_list %}
+      <a href="javascript:select_category({{ category.id }})" class="part-click"><div class="part-contents">
+        <div class="part-contents-box flex">
+          <div class="part-contents-box-images flex">
+          <img src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/image/category/{{ category.id }}.png" alt="clothing">
+        <p class="part-title">{{ category.name }}</p>
+      </div>
+          <div class="arrow category-arrow">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </div></a>
+			{% endfor %}
+
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-box">
+        <div class="footer-img">
+          <a href="../home.html"
+            ><i class="fas fa-home"></i>
+            <p>ホーム</p>
+          </a>
+        </div>
+        <div class="footer-img">
+          <a href="../good.html"
+            ><i class="far fa-heart"></i>
+            <p>いいね</p>
+          </a>
+        </div>
+        <div class="footer-img color">
+          <a href="./item.html"
+            ><i class="fas fa-camera"></i>
+            <p>出品</p>
+          </a>
+        </div>
+        <div class="footer-img">
+          <a href="">
+            <i class="fas fa-globe-africa"></i>
+            <p>エコ</p>
+          </a>
+        </div>
+        <div class="footer-img">
+          <a href="../profile/mypage.html">
+            <i class="far fa-user"></i>
+            <p>マイページ</p>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/js/index.js"></script>
+<script>
+var brand;
+var gender;
+var category;
+
+function select_brand(brand_id){
+brand = brand_id
+}
+
+function select_gender(gender_id){
+gender = gender_id
+}
+
+function select_category(category_id){
+category = category_id
+window.location.href = `/select_temp?brand=${brand}&gender=${gender}&category=${category}`;
+}
+</script>
+  </body>
+</html>
