@@ -157,3 +157,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # 画像保存パスの指定
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STRIPE_SECRET_KEY = "sk_test_51Je5QnLizjvjeOWvoDdzagTaNh0nXvtZ77aOw99qnbFbqvnDuLyYzJRAz3CNop3YTgSCPhweH6ULOLvv9ZSwTwGH00Q8igKXit"
