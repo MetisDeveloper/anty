@@ -5,9 +5,12 @@ from django.conf import settings
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-
+from ipware import get_client_ip
 from .models import Point
+import time
+import stripe
 
+stripe.api_key = "sk_test_51Je5QnLizjvjeOWvoDdzagTaNh0nXvtZ77aOw99qnbFbqvnDuLyYzJRAz3CNop3YTgSCPhweH6ULOLvv9ZSwTwGH00Q8igKXit"
 
 User = get_user_model()
 
@@ -36,14 +39,36 @@ class SignUpForm(UserCreationForm):
         # commit=Falseだと、DBに保存されない
         user = super().save(commit=False)
         user.email = self.cleaned_data["email"]
+
+        print (user.email)
         
-        print ("save")
         # メール認証を実装するまでの間は無効
         # 確認するまでログイン不可にする
         #user.is_active = False
-
+        account = stripe.Account.create(
+        type="custom",
+        country="JP",
+        email=user.email, #user email
+        business_type="individual",
+        individual = {
+            'email': user.email,
+        },
+        capabilities={
+            'card_payments': {
+            'requested': True,
+            },
+            'transfers': {
+            'requested': True,
+            },
+        },
+        tos_acceptance={
+            'date': int(time.time()),
+            'ip': '8.8.8.8', # Depends on what web framework you're using
+        }
+        )
+        print (account)
         user.is_active = True
-
+        user.stripe_id = account.id
         if commit:
             user.save()
             #activate_url = get_activate_url(user)

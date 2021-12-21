@@ -87,6 +87,7 @@ def listing_detail(request):
 
 
 def listing(request):
+    template_name = "listing/complete.html"
     if request.method == "POST":
         listing_data = Used_product(
             temp_product = Temp_used_product(id=int(request.POST.get("temp_product"))),
@@ -99,4 +100,14 @@ def listing(request):
             is_released = True,
         )
         listing_data.save()
-        return redirect("home")
+
+        for count in range(1, 6):
+            image = request.POST.get("image"+str(count))
+            if image:
+                Used_product_image(used_product=Used_product(id=listing_data.id),path=image).save()
+
+        #params = {
+        #
+        #}
+        
+        return render(request, template_name)

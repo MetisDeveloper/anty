@@ -86,7 +86,7 @@
         </div>
         <div class="item-day-bottom-verification">
             <p>{{ address.lastname }}&emsp;{{ address.firstname }}　<span>{{ address.tel }}</span></p>
-            <p>〒&ensp;{{ address.portalcode }}</p>
+            <p>〒&ensp;{{ address.postalcode }}</p>
             <p>{{ address.prefecture.name }}{{ address.detail1 }}{{ address.detail2 }}{{ address.detail3 }}</p>
         </div>
         </div>
@@ -131,7 +131,7 @@
 </div>
 <div class="text-area-bottom">
 <div class="text-area-verification">
-    <p>{{ detail }}</p>
+    <p>{{ detail |linebreaksbr }}</p>
 </div>
    </div>
 </div>
@@ -181,7 +181,7 @@
             <input type="hidden" value="{{ selected_product_status.id }}" name="selected_product_status">
             <input type="hidden" value="{{ selected_hope_sell.id }}" name="selected_hope_sell">
             <input type="hidden" value="{{ price }}" name="price">
-            <input type="hidden" value="{{ detail }}" name="detail">
+            <textarea style="display:none;" name="detail">{{ detail }}</textarea>
             <input type="hidden" value="{{ address.id }}" name="address">
             <input type="hidden" value="{{ temp_product.id }}" name="temp_product">
             {% for image in images %}

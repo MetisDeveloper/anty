@@ -34,6 +34,7 @@ class User(AbstractUser):
     username = models.CharField(_('username'), max_length=32, null=True, default="ゲスト")
     email = models.EmailField(_('email address'), unique=True)
     tel = models.CharField(_('tel'), max_length=32, null=False)
+    stripe_id = models.TextField(max_length=50, null=True)
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
@@ -58,16 +59,20 @@ class Point(models.Model):
 class Address(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     prefecture = models.ForeignKey(Prefectures, on_delete=models.CASCADE)
-    portalcode = models.IntegerField()
+    postalcode = models.IntegerField()
     detail1 = models.TextField(max_length=30)
     detail2 = models.TextField(max_length=30)
     detail3 = models.TextField(max_length=30, null=True)
+    detail4 = models.TextField(max_length=30, null=True)
+    kana1 = models.TextField(max_length=30)
+    kana2 = models.TextField(max_length=30)
+    kana3 = models.TextField(max_length=30, null=True)
+    kana4 = models.TextField(max_length=30, null=True)
     firstname = models.TextField(max_length=15)
     firstname_furi = models.TextField(max_length=20, null=True)
     lastname= models.TextField(max_length=15)
     lastname_furi = models.TextField(max_length=20, null=True)
     tel = models.CharField(max_length=32, null=False)
-    primary = models.BooleanField(default=False)
 
 
 
@@ -128,3 +133,12 @@ class Used_product(models.Model):
     hope = models.ForeignKey(Hope_sell, on_delete=models.CASCADE)
     is_released = models.BooleanField(default=False)
     is_delete = models.BooleanField(default=False)
+
+class Used_product_image(models.Model):
+    used_product = models.ForeignKey(Used_product, on_delete=models.CASCADE)
+    path = models.TextField(max_length=1000)
+
+
+class favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Used_product, on_delete=models.CASCADE)

@@ -27,7 +27,7 @@
 
     <main>
         <div class="main">
-            <form method="POST" name="main_form">
+            <form method="POST" name="main_form" action="{% url 'address_edit' %}">
             {% csrf_token %}
                 <div class="main-address">
                     <section class="address-contents change">
@@ -36,15 +36,14 @@
                                 <div class="change-big-left flex">
                                     <div class="big-left-left">
                                         <p class="big-left-text">姓</p>
-                                           <input class="edit-input name_text" type="text" {% if address %}value="{{ address.lastname }}"{% endif %} name="lastname" required>
-                                            <input class="edit-input name_text" type="text" {% if address %}value="{{ address.lastname_furi }}"{% endif %} name="lastname_furi" required>
+                                           <input class="edit-input name_text" type="text" {% if address %}value="{{ address.lastname_furi  }}"{% endif %} name="lastname_furi" required>
+                                            <input class="edit-input name_text" type="text" {% if address %}value="{{ address.lastname}}"{% endif %} name="lastname" required>
         
                                     </div>
                                     <div class="big-left-right">
                                         <p class="big-left-text">名</p>
-                                            <input class="edit-input name_text" type="text" {% if address %}value="{{ address.firstname }}"{% endif %} name="firstname" required>
                                             <input class="edit-input name_text" type="text" {% if address %}value="{{ address.firstname_furi }}"{% endif %} name="firstname_furi" required>
-        
+                                            <input class="edit-input name_text" type="text" {% if address %}value="{{ address.firstname }}"{% endif %} name="firstname" required>
                                     </div>
                                 </div>
                                 <div class="change-contents">
@@ -56,9 +55,9 @@
                             <div class="change-mail flex change-bottom">
                                 <div class="change-contents mail-contents">
                                     <p class="big-left-text">郵便番号</p>
-                                            <input class="edit-input" type="text" {% if address %}value="{{ address.portalcode }}"{% endif %} name="portalcode" required>
+                                            <input class="edit-input" type="text" {% if address %}value="{{ address.postalcode }}"{% endif %} name="postalcode" id="postalcode" required>
                                 </div>
-                                <button id="btn">郵便番号検索</button>
+                                <button type="button" id="btn">郵便番号検索</button>
                             </div>
                             <div class="change-Prefecture flex change-bottom">
                                 <div class="change-contents Prefecture-contents">
@@ -138,25 +137,46 @@
                                 
                                     
                                 </div>
-                                <div class="change-contents city-contents">
-                                    <p class="big-left-text">市区町村</p>
-                                            <input class="edit-input" type="text" {% if address %}value="{{ address.detail1 }}"{% endif %} name="detail1" id="city" required>
-        
                                 </div>
                             </div>
+                            <input type="hidden" name="prefecture_kana" id="prefecture_kana">
                             <div class="change-contents number-contents change-bottom">
-                                <p class="big-left-text">番地</p>
-                                        <input class="edit-input" type="text" {% if address %}value="{{ address.detail2 }}"{% endif %} name="detail2" required>
+                                <p class="big-left-text">市区町村</p>
+                                        <input class="edit-input" type="text" {% if address %}value="{{ address.detail1 }}"{% endif %} name="detail1" id="detail1" required>
+                            </div>
+                            <div class="change-contents number-contents change-bottom">
+                                <p class="big-left-text">市区町村（カナ）</p>
+                                        <input class="edit-input" type="text" {% if address %}value="{{ address.kana1 }}"{% endif %} name="kana1" id="kana1" required>
+                            </div>
+                            <div class="change-contents number-contents change-bottom">
+                                <p class="big-left-text">町域</p>
+                                        <input class="edit-input" type="text" {% if address %}value="{{ address.detail2 }}"{% endif %} name="detail2" id="detail2" required>
+                            </div>
+                            <div class="change-contents number-contents change-bottom">
+                                <p class="big-left-text">町域（カナ）</p>
+                                        <input class="edit-input" type="text" {% if address %}value="{{ address.kana2 }}"{% endif %} name="kana2" id="kana2" required>
+                            </div>
+                            <div class="change-contents building-contents">
+                                <p class="big-left-text">番地以降（任意）</p>
+                                        <input class="edit-input" type="text" {% if address %}value="{{ address.detail3 }}"{% endif %} name="detail3" id="detail3">
+                            </div>
+                            <div class="change-contents building-contents">
+                                <p class="big-left-text">番地以降（任意）（カナ）</p>
+                                        <input class="edit-input" type="text" {% if address %}value="{{ address.kana3 }}"{% endif %} name="kana3" id="kana3">
                             </div>
                             <div class="change-contents building-contents">
                                 <p class="big-left-text">建物名（任意）</p>
-                                        <input class="edit-input" type="text" {% if address %}value="{{ address.detail3 }}"{% endif %} name="detail3">
+                                        <input class="edit-input" type="text" {% if address %}value="{{ address.detail4 }}"{% endif %} name="detail4" id="detail4">
+                            </div>
+                            <div class="change-contents building-contents">
+                                <p class="big-left-text">建物名（任意）（カナ）</p>
+                                        <input class="edit-input" type="text" {% if address %}value="{{ address.kana4 }}"{% endif %} name="kana4" id="kana4">
                             </div>
                             </div>
                     </section>
                     <div class="change-btn-box">
-                        <a href="javascript:$('#hidden_button').click()" class="change-btn">{% if address %}変更する{% else %}登録する{% endif %}</a>
-			<input type="submit"  style="display:none" id="hidden_button">
+                        <a href="javascript:$('#hidden_button').click();" class="change-btn" style="margin-bottom:40px;">{% if address %}変更する{% else %}登録する{% endif %}</a>
+			<input type="submit" style="display:none" id="hidden_button">
                     </div>
                 </div>
             </form>
@@ -165,6 +185,7 @@
 
     
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/fetch-jsonp@1.1.3/build/fetch-jsonp.min.js"></script>
 	<script>
 {% if messages %}
 {% for message in messages %}
@@ -176,6 +197,39 @@ $(function() {
   $('option[value="{{ address.prefecture.id }}"]').prop('selected', true);
 });
 {% endif %}
+
+// 郵便番号検索
+let search = document.getElementById('btn');
+search.addEventListener('click', ()=>{
+    let api = 'https://zipcloud.ibsnet.co.jp/api/search?zipcode=';
+    let input = document.getElementById('postalcode');
+    let param = input.value.replace("-",""); //入力された郵便番号から「-」を削除
+    let url = api + param;
+
+    fetchJsonp(url, {
+        timeout: 10000, //タイムアウト時間
+    })
+    .then((response)=>{
+        return response.json();
+    })
+    .then((data)=>{
+        console.log(data);
+        if(data.status === 400){ //エラー時
+            alert(data.message);
+        }else if(data.results === null){
+            alert('郵便番号から住所が見つかりませんでした。');
+        } else {
+            $("#prefecture_kana").val(data.results[0].kana1);
+            $("#kana1").val(data.results[0].kana2);
+            $("#kana2").val(data.results[0].kana3);
+            $("#detail1").val(data.results[0].address2);
+            $("#detail2").val(data.results[0].address3);
+        }
+    })
+    .catch((ex)=>{ //例外処理
+        console.log(ex);
+    });
+}, false);
         </script>
     </body>
     </html>

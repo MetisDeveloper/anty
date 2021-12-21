@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/css/style.css" />
     <link
       href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
       rel="stylesheet"
@@ -27,7 +27,7 @@
     <main>
       <div class="main">
         <div class="main-address">
-		{% for address in address_data %}
+		{% if address %}
           <section class="address-contents">
                 <div class="address-width">
                 <div class="address-big">
@@ -48,7 +48,7 @@
               </div>
               </div>
               <div class="address-tel-box home-number address-bottom">
-                <p class="address-tel home-text">{{ address.portalcode }}</p>
+                <p class="address-tel home-text">{{ address.postalcode }}</p>
               </div>
               <div class="address-home-box address-bottom">
                 <div class="address-tel-box home-left">
@@ -71,10 +71,10 @@
               </div>
             </div>
             <div class="address-btn-box">
-		    <a href="{% url "address_edit" address.id %}" class="address-btn">編集する</a>
+		    <a href="{% url "address_edit" %}" class="address-btn">編集する</a>
             </div>
           </section>
-      {% endfor %}
+      {% else %}
       <a href="{% url "address_create" %}" class="address-new-box">
             <div class="address-new-contents home-text">
               <div class="icon">
@@ -85,6 +85,7 @@
               </div>
             </div>
           </a>
+        {% endif %}
               </div>
       </div>
     </main>

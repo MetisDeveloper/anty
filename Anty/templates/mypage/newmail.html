@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   
+    <link rel="stylesheet" href="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/css/style.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="member good">
+        <h3>
+        <a href="javascript:history.back()"
+            ><i class="fas fa-chevron-left "></i
+          ></a>
+        メール</h3>
+      </div>
+    </div>
+    </header>
+
+    <main>
+        <div class="main">
+            <form method="POST">
+              {% csrf_token %}
+                <div class="main-address">
+                    <section class="address-contents newmail-contents">
+                        <div class="address-width">
+                            <div class="change-contents newmail-box">
+                                <p class="big-left-text">新しいメールアドレス</p>
+                                        <input class="edit-input new-input" type="text" name="email">
+                            </div>
+                            <div class="newmail-text-box">
+                                <p class="newmail-box-text">メールアドレスを変更すると、確認メールが届きます。</p>
+                            <p class="newmail-box-text-text">メール内のURLをクリックすると変更完了です。（未実装）</p>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="change-btn-box">
+                        <a href="javascript:$('#hidden_button').click();" class="change-btn">変更する</a>
+                        <input type="submit" style="display:none" id="hidden_button">
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </main>
+   
+
+    <script src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/js/index.js"></script>
+  </body>
+</html>
+        
+            

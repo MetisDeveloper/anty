@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   
+    <link rel="stylesheet" href="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/css/style.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="member good">
+        <h3>
+        <a href="javascript:history.back()"
+            ><i class="fas fa-chevron-left "></i
+          ></a>
+        メール、パスワード</h3>
+      </div>
+    </div>
+    </header>
+
+    <main>
+        <div class="main">
+            <div class="main-address">
+                <section class="address-contents mailpass-contents">
+                    <div class="address-width">
+                        <div class="mailpass-box flex mail-box-first">
+                            <div class="mailpass-box-left">
+                                <p class="mailpass-box-left-title">メールアドレス</p>
+                                <div class="address-tel-box mailpass-box-left-text">
+                                    <p class="address-tel home-text">{{ email }}</p>
+                                </div>
+                            </div>
+                            <div class="mailpass-box-right">
+                                <div class="address-btn-box mailpass-btn-box">
+                                    <a href="{% url 'new_email' %}" class="address-btn">変更</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mailpass-box flex">
+                            <div class="mailpass-box-left">
+                                <p class="mailpass-box-left-title">パスワード</p>
+                                <div class="address-tel-box mailpass-box-left-text">
+                                    <p class="address-tel home-text">•••••••••••••••</p>
+                                </div>
+                            </div>
+                            <div class="mailpass-box-right">
+                                <div class="address-btn-box mailpass-btn-box">
+                                    <a href="./newpass.html" class="address-btn">変更</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    
+
+    <script src="https://object-storage.tyo2.conoha.io/v1/nc_bb1da7ddca434cf287ba087513281fff/service/js/index.js"></script>
+  </body>
+</html>
